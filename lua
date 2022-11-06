@@ -10,6 +10,7 @@ getgenv().AimPart = "UpperTorso" -- For R15 Games: {UpperTorso, LowerTorso, Huma
     getgenv().CheckIfJumped = true
     getgenv().Smoothness = false
     getgenv().SmoothnessAmount = 0.015
+    getgenv().AutoPrediction = false
 
     local Players, Uis, RService, SGui = game:GetService"Players", game:GetService"UserInputService", game:GetService"RunService", game:GetService"StarterGui";
     local Client, Mouse, Camera, CF, RNew, Vec3, Vec2 = Players.LocalPlayer, Players.LocalPlayer:GetMouse(), workspace.CurrentCamera, CFrame.new, Ray.new, Vector3.new, Vector2.new;
@@ -168,3 +169,9 @@ getgenv().AimPart = "UpperTorso" -- For R15 Games: {UpperTorso, LowerTorso, Huma
        end
     end
 end)
+
+if getgenv().AutoPrediction == true then
+    getgenv().PredictionVelocity = 7.02
+else
+    getgenv().PredictionVelocity = 7
+end
