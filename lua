@@ -170,8 +170,19 @@ getgenv().AimPart = "UpperTorso" -- For R15 Games: {UpperTorso, LowerTorso, Huma
     end
 end)
 
-if getgenv().AutoPrediction == true then
-    getgenv().PredictionVelocity = 7.02
-else
-    getgenv().PredictionVelocity = 7
-end
+	while wait() do
+	if getgenv().AutoPrediction == true then
+        local pingvalue = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+        local split = string.split(pingvalue,'(')
+        local ping = tonumber(split[1])
+        if ping < 80 then
+            getgenv().PredictionVelocity = 7.02
+        elseif ping < 70 then
+            getgenv().PredictionVelocity = 7.02
+        elseif ping < 60 then
+            getgenv().PredictionVelocity = 7.111
+        elseif ping < 50 then
+            getgenv().PredictionVelocity = 7.111
+        end
+	end
+	end
